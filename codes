@@ -1,0 +1,40 @@
+#importing beautifulsoup after installation
+from bs4 import BeautifulSoup
+
+#importing requests after installation
+import requests
+
+#link for site to scrape from
+url='https://towardsdatascience.com/python-sqlite-tutorial-the-ultimate-guide-fdcb8d7a4f30'
+
+#You need to be connected to the internet for this code to run successfully
+r=requests.get(url)
+
+#conversion to text
+html=r.text
+
+#Applying beautifulsoup
+beasoup=BeautifulSoup(html)
+
+
+#Extracted contents
+print(beasoup.prettify())
+
+
+#gets title
+beasoup.title
+
+
+#gets title and text
+beasoup.get_text()
+
+
+#extracts urls of all herperlinks present in the link
+for link in beasoup.find_all('a'):
+    print(link.get('href'))
+    
+    
+beasoup.find_all('a')
+
+
+beasoup.find_all(class_='q')
